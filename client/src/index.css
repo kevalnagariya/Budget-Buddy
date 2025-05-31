@@ -1,13 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Importing the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Importing Tailwind CSS base utilities and classes */
+@import "tailwindcss";
+
+/* Defining custom theme values (like fonts, breakpoints, and colors) */
+@theme {
+  --font-display : "Poppins", "sans-serif";   /* Custom font for the app */
+  --breakpoint-3xl: 1920px;                  /* Custom screen size breakpoint */
+  --color-primary: #875cf5;                  /* Custom primary color */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Adding base styles using Tailwind's layer system */
+@layer base {
+  html {
+    /* Apply custom font to entire HTML document */
+    font-family: var(--font-display);
+  }
+
+  body {
+    /* Set a light background and prevent horizontal scrolling */
+    background-color: #fcfbfc;
+    overflow-x: hidden;
+  }
+
+  /* Style for all input containers using Tailwind's @apply */
+  .input-box {
+    @apply w-full flex justify-between gap-3 text-sm text-black bg-slate-100 
+           rounded px-4 py-3 mb-4 mt-3 border border-slate-200 outline-none;
+    /* 
+      - Full width input
+      - Space between input and icons
+      - Rounded corners and padding
+      - Light grey background with border
+    */
+  }
+
+  /* Style for primary button used across the app */
+  .btn-primary {
+    @apply w-full text-sm font-medium text-white bg-violet-500 
+           shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 
+           hover:bg-purple-600/15 hover:text-purple-600;
+    /* 
+      - Full width, white text
+      - Violet background with soft shadow
+      - Rounded corners and padding
+      - On hover: light purple background & text
+    */
+  }
 }
